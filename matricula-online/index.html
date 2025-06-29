@@ -44,6 +44,85 @@
             margin: 40px 0;
             color: #777;
         }
+
+        /* Estilo para o contador de visitas */
+        .visitor-count-section {
+            text-align: center;
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #e0f2f7;
+            /* Um azul claro */
+            border-radius: 5px;
+            border: 1px solid #b3e5fc;
+        }
+
+        .visitor-count-section p {
+            font-size: 1.1em;
+            color: #0056b3;
+            margin: 0;
+        }
+
+        .visitor-count-section strong {
+            font-size: 1.5em;
+            color: #003366;
+        }
+
+        /* Estilo para a seção de registro de e-mail */
+        .email-signup-section {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f0f8ff;
+            /* Um azul muito claro */
+            border-radius: 8px;
+            border: 1px solid #cceeff;
+        }
+
+        .email-signup-section h2 {
+            color: #0056b3;
+            border-bottom: none;
+        }
+
+        .email-signup-section p {
+            font-size: 1.05em;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .input-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            /* Espaço entre input e botão */
+            flex-wrap: wrap;
+            /* Para responsividade */
+        }
+
+        .input-group input[type="email"] {
+            padding: 10px 15px;
+            border: 1px solid #0078d4;
+            border-radius: 5px;
+            font-size: 1em;
+            width: 100%;
+            /* Ocupa 100% em telas pequenas */
+            max-width: 300px;
+            /* Limita a largura em telas maiores */
+        }
+
+        .input-group button {
+            padding: 10px 20px;
+            background-color: #0078d4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .input-group button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 
@@ -104,9 +183,48 @@
         </ul>
     </section>
 
+    <section class="visitor-count-section">
+        <p>Este site foi visitado <strong><span id="visitorCount">...</span></strong> vezes.</p>
+    </section>
+
+    <section class="email-signup-section">
+        <h2>Receba Novidades!</h2>
+        <p>Deixe seu e-mail para receber atualizações sobre o sistema de matrícula:</p>
+        <div class="input-group">
+            <input type="email" id="emailInput" placeholder="seu.email@exemplo.com" required>
+            <button id="registerEmailBtn">Registrar E-mail</button>
+        </div>
+        <div id="emailStatusMessage" style="margin-top: 10px; font-weight: bold;"></div>
+    </section>
+
     <footer>
         &copy; 2025 Leonardo Costa de Carvalho. Documento técnico para fins educacionais.
     </footer>
+
+    <script>
+        // IMPORTANTE: Substitua 'SUA_URL_DA_FUNCTION_APP_AQUI' pela URL real da sua função HTTP
+        // Exemplo: https://suafunctionapp.azurewebsites.net/api/ContadorVisitas
+        const functionAppUrl = 'https://formmatriculaweb123.z5.web.core.windows.net/api/ContadorVisitas?code=fM00yPC0ibEmYK8gL5XrPC3ao3Byj3W7pvv-abYAU9IAAzFuQyrLrA==';
+
+        async function getVisitorCount() {
+            try {
+                const response = await fetch(functionAppUrl);
+
+                if (!response.ok) {
+                    throw new Error(`Erro ao buscar contador: ${response.status} ${response.statusText}`);
+                }
+
+                const count = await response.json(); // Espera um número ou JSON com o campo 'count'
+                document.getElementById('visitorCount').innerText = count.toString(); // Atualiza o texto
+            } catch (error) {
+                console.error('Erro ao carregar o contador de visitas:', error);
+                document.getElementById('visitorCount').innerText = 'erro';
+            }
+        }
+
+        // Chama a função quando a página é carregada
+        document.addEventListener('DOMContentLoaded', getVisitorCount);
+    </script>
 </body>
 
 </html>
