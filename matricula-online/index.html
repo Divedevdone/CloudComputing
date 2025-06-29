@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arquitetura Matrícula Online</title>
+    <style>
+        body {
+            font-family: "Segoe UI", sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f6f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #0078d4;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        section {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+        }
+
+        h2 {
+            border-bottom: 2px solid #0078d4;
+            padding-bottom: 5px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.9em;
+            margin: 40px 0;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Arquitetura de Matrícula Online</h1>
+        <p>por Leonardo Costa de Carvalho</p>
+    </header>
+
+    <section>
+        <h2>Escalabilidade e Disponibilidade</h2>
+        <ul>
+            <li>Uso de Azure VM Scale Sets, App Services e Functions.</li>
+            <li>Elastic Load Balancer e CDN para alta performance.</li>
+            <li>Auto Scaling e monitoramento com Azure Monitor.</li>
+        </ul>
+
+        <h2>Banco de Dados e Armazenamento</h2>
+        <ul>
+            <li>Azure SQL Database e Read Replicas para performance.</li>
+            <li>Blob Storage com SAS Token, criptografia e versionamento.</li>
+            <li>Backup automático com 7 a 35 dias de retenção.</li>
+        </ul>
+
+        <h2>Processamento Assíncrono</h2>
+        <ul>
+            <li>Azure Queue Storage e Service Bus para eventos.</li>
+            <li>Functions acionadas com base em filas.</li>
+            <li>Azure Step Functions como opção orquestradora.</li>
+        </ul>
+
+        <h2>Autenticação e Segurança</h2>
+        <ul>
+            <li>Azure AD B2C com MFA e RBAC.</li>
+            <li>Uso de WAF, Firewalls, API Management e OAuth 2.0.</li>
+            <li>Criptografia em trânsito e em repouso ativada.</li>
+        </ul>
+
+        <h2>Monitoramento e Alertas</h2>
+        <ul>
+            <li>Alertas por criticidade com Action Groups.</li>
+            <li>Application Insights e logs de diagnóstico.</li>
+            <li>Cost Management para controle de orçamento.</li>
+        </ul>
+
+        <h2>Disaster Recovery e Redundância</h2>
+        <ul>
+            <li>Multi-AZ e Multi-Region com failover automático.</li>
+            <li>RPO de 15min e RTO de até 1h.</li>
+            <li>Testes de restauração a cada 6 meses.</li>
+        </ul>
+
+        <h2>Outros Destaques</h2>
+        <ul>
+            <li>Modelo elástico pronto para 10x mais usuários.</li>
+            <li>Custos otimizados em baixas demandas com serverless.</li>
+            <li>Arquitetura modular com microsserviços e CI/CD.</li>
+        </ul>
+    </section>
+
+    <footer>
+        &copy; 2025 Leonardo Costa de Carvalho. Documento técnico para fins educacionais.
+    </footer>
+</body>
+
+</html>
