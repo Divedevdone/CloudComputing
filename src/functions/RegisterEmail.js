@@ -69,5 +69,5 @@ module.exports = async function (context, req) {
                 context.log.error('Erro ao fechar conexão SQL:', closeErr.message);
             }
         }
-    }
+    }//
 };
